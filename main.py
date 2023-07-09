@@ -3,12 +3,14 @@ from config.dbConnection import client
 from dotenv import dotenv_values
 
 from routes.products_route import products_router
+from routes.orders_route import orders_router
 
 config = dotenv_values(".env")
 
 app = FastAPI()
 
 app.include_router(products_router)
+app.include_router(orders_router)
 
 @app.on_event("startup")
 def startup_db_client():
