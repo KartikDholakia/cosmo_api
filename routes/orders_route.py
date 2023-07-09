@@ -30,6 +30,16 @@ def find_order(request: Request, id: str):
 # Post an Order
 @orders_router.post('/orders')
 def create_order(request: Request, order: Orders):
+    order = dict(order)
+    
+    # Encoding the data before inserting to MongoDB
+    items = order['items']
+    order['items'] = []
+    for item in items:
+        order['items'].append(dict(item))
+
+    order['address'] = dict(order['address'])
+
     id = request.app.database["orders"].insert_one(dict(order))
     res = order_serializer(request.app.database["orders"].find_one({"_id": id.inserted_id}))
     return {

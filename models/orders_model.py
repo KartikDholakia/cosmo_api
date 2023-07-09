@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 from datetime import datetime
 from models.products_model import Products
-from typing import List
+from typing import List, Optional
 
 
 class Address(BaseModel):
@@ -16,6 +16,6 @@ class Items(BaseModel):
 
 
 class Orders(BaseModel):
-    timestamp: datetime = datetime.now()
+    timestamp: Optional[datetime] = datetime.now()
     items: List[Items]
     address: Address
