@@ -4,6 +4,8 @@ This project is focused on building REST APIs using FastAPI and MongoDB. API bui
 
 - Create, Read, Update, and Delete products
 - Place orders (nested objects)
+- Fetch all orders
+- Search an order by its Order ID
 
 ---
 
